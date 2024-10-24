@@ -20,8 +20,8 @@ jobs:
 
       - name: Generate GitHub JWT
         env:
-          GITHUB_APP_ID: ${{ secrets.GITHUB_APP_ID }}
-          GITHUB_PRIVATE_KEY: ${{ secrets.GITHUB_PRIVATE_KEY }}
+          GITHUB_APP_ID: ${{ secrets.APP_ID }}
+          GITHUB_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
           echo "${GITHUB_PRIVATE_KEY}" > private-key.pem
           node generate-jwt.js
