@@ -1,0 +1,30 @@
+name: Generate GitHub JWT
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-jwt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install jsonwebtoken
+
+      - name: Generate GitHub JWT
+        env:
+          GITHUB_APP_ID: ${{ secrets.GITHUB_APP_ID }}
+          GITHUB_PRIVATE_KEY: ${{ secrets.GITHUB_PRIVATE_KEY }}
+        run: |
+          echo "${GITHUB_PRIVATE_KEY}" > private-key.pem
+          node generate-jwt.js
+
+      - name: Clean up private key
+        run: rm private-key.pem
