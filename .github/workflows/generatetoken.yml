@@ -25,7 +25,6 @@ jobs:
         run: |
           echo "${GITHUB_PRIVATE_KEY}" > private-key.pem
           node generate-jwt.js
-          echo "Generated token: ${{ steps.generate.outputs.jwt_token }}"
 
       - name: Clean up private key
         run: rm private-key.pem
