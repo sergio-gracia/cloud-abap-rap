@@ -25,6 +25,11 @@ jobs:
         run: |
           echo "${GITHUB_PRIVATE_KEY}" > private-key.pem
           node generate-jwt.js
+      - name: Upload Token as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-token
+          path: token.txt
 
       - name: Clean up private key
         run: rm private-key.pem
