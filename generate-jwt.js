@@ -5,7 +5,7 @@ const fs = require('fs');
 const privateKey = fs.readFileSync('private-key.pem');
 
 // Crear el JWT
-const token = jwt.sign(
+const uwu = jwt.sign(
   {
     // Este token expira en 10 minutos
     exp: Math.floor(Date.now() / 1000) + 600,
@@ -15,4 +15,4 @@ const token = jwt.sign(
   { algorithm: 'RS256' }
 );
 
-console.log(token);
+console.log(uwu);
