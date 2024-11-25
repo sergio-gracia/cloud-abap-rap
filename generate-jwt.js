@@ -14,4 +14,4 @@ const uwu = jwt.sign(
   privateKey,
   { algorithm: 'RS256' }
 );
-console.log(`::set-output name=jwt_token::${uwu}`);
+fs.writeFileSync('token.txt', uwu);
